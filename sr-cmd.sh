@@ -95,8 +95,4 @@ for file in $files; do
     [[ "$file_name" == .txt ]] && rm "$file" && continue
     # Rename file from x* to a descriptive name
     mv "$file" "$file_name" && echo "[*] created file: $file_name" || echo "[!] ERROR: failed to rename $file"
-    # TODO: find a way to trim newlines from end of file
-    # while [[ $(tail -c 1 "$file_name" | wc -l) -eq 0 ]]; do
-    #     truncate -s -1 "$file_name"
-    # done
 done
