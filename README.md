@@ -6,7 +6,7 @@ enumeration and saving each command's output locally in a seperate file for furt
 
 ## Prerequisites
 1. SSH login credentials for the target machine: Only password-based authentication is supported at the moment. Key-based authentication support will be added in the future. 
-2. [SSHPpass](https://linux.die.net/man/1/sshpass): install on Debian-based distros with `sudo apt install sshpass`.
+2. [SSHpass](https://linux.die.net/man/1/sshpass): install on Debian-based distros with `sudo apt install sshpass`.
 
 ## Installation
 ```bash
@@ -25,8 +25,8 @@ Usage: sr-cmd.sh -u [username] -p [password] -i [ip] -P [optional port]
 Important: The script expects a "commands.bat" file in its working directory
 
 Examples:
-sr-cmd.sh -u auser -p s3cret -i 1.1.1.1
-sr-cmd.sh --username auser --password s3cret -i 1.1.1.1 -P 2222
+./sr-cmd.sh -u auser -p s3cret -i 1.1.1.1
+./sr-cmd.sh --username auser --password s3cret -i 1.1.1.1 -P 2222
 
 Flags:
     -u, --username  SSH username
@@ -36,6 +36,10 @@ Flags:
     -h, --help      Print this help message and exit
 ``` 
 
+## Troubleshooting
+SSHpass only attempts to pass an SSH password non-interactively, so it will quit if it encounters another user prompt, such as when SSH can't establish the authenticity of the target host.
+To solve any issue SSHpass might encounter, make sure you can SSH to the target host as you normally would, e.g. `ssh username@ip`, and then try running `sr-cmd.sh` again.
+
 ## ToDo
-- [ ] Write a Linux version.
-- [ ] Add an option for key-based authentication.
+- [ ] Add suport for Linux.
+- [ ] Add support for key-based authentication.
