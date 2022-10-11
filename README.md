@@ -42,4 +42,3 @@ To solve any issue SSHpass might encounter, make sure you can SSH to the target 
 
 ## ToDo
 - [ ] Add suport for Linux.
-- [ ] Add support for key-based authentication.
