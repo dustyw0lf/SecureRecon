@@ -61,7 +61,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 # ---Check if sshpass is installed--
-sshpass -v >/dev/null 2>&1 || { echo '[!] ERROR: cannot find sshpass. make sure it is installed and in your PATH'; exit 1; }
+sshpass -V >/dev/null 2>&1 || { echo '[!] ERROR: cannot find sshpass. make sure it is installed and in your PATH'; exit 1; }
 
 # ---Check command line arguments---
 CHECK_USERNAME=true
@@ -80,7 +80,7 @@ fi
 [[ -z "$PORT" ]] && PORT="22"
 
 # --Run commands and split their output into different files--
-sshpass -p "$PASSWORD" ssh -p "$PORT" "$USERNAME"@"$IP" 'cmd' < commands.bat | csplit -sz - '/^[a-zA-Z]:\\.*\>/' '{*}'
+sshpass -v -p "$PASSWORD" ssh -p "$PORT" "$USERNAME"@"$IP" 'cmd' < commands.bat | csplit -sz - '/^[a-zA-Z]:\\.*\>/' '{*}'
 # remove unneeded file
 [[ -e xx00 ]] && rm xx00
 
